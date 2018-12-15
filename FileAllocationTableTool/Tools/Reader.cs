@@ -9,10 +9,6 @@ namespace FileAllocationTableTool.Tools
         {
             VolumeImage = new StreamReader(new FileStream(PathToImage, FileMode.Open));
         }
-        ~Reader()
-        {
-            VolumeImage.Close();
-        }
         public byte[] ReadFromOffset(int offset, int count)
         {
             byte[] result = new byte[count];
