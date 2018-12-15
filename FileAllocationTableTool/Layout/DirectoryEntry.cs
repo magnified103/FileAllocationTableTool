@@ -92,7 +92,7 @@
             x          y          z
         Hours = x = 19
         Minutes = y = 26
-        Seconds = 9 * 2 = 18
+        Seconds = z * 2 = 9 * 2 = 18
         */
         byte[] ShortFileName = new byte[8];                     //0x000
         byte[] ShortFileExtention = new byte[3];                //0x008
