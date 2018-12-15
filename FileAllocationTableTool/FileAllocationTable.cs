@@ -7,7 +7,7 @@ namespace FileAllocationTableTool
         //Reserved sector
         ReservedRegion ReservedRegion;
         //File Allocation Table sector
-        FATRegion FATRegion;
+        FileAllocationTableRegion FileAllocationTableRegion;
         //Root Directory sector
         RootDirectoryRegion RootDirectoryRegion;
     }

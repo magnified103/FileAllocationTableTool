@@ -45,7 +45,7 @@
     <Compile Include="Layout\DirectoryEntry.cs" />
     <Compile Include="Tools\Converter.cs" />
     <Compile Include="Layout\BootSector.cs" />
-    <Compile Include="Layout\FATRegion.cs" />
+    <Compile Include="Layout\FileAllocationTableRegion.cs" />
     <Compile Include="Layout\ReservedRegion.cs" />
     <Compile Include="FileAllocationTable.cs" />
     <Compile Include="Layout\RootDirectoryRegion.cs" />
