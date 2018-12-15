@@ -1,0 +1,7 @@
+# Visual Studio
+.vs/
+
+# Executables
+*.exe
+FileAllocationTableTool/bin/
+FileAllocationTableTool/obj/
