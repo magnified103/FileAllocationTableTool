@@ -1,6 +1,6 @@
 ﻿namespace FileAllocationTableTool.Layout
 {
-    class DirectoryEntry : ReservedRegion
+    class DirectoryEntry : RootDirectoryRegion
     {
         byte[] ShortFileName = new byte[8];                     //0x000
         byte[] ShortFileExtention = new byte[3];                //0x008
