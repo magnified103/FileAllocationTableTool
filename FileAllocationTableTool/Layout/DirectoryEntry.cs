@@ -1,4 +1,6 @@
-﻿namespace FileAllocationTableTool.Layout
+﻿using FileAllocationTableTool.Tools;
+
+namespace FileAllocationTableTool.Layout
 {
     /*
         Directory entry
@@ -94,6 +96,7 @@
         Minutes = y = 26
         Seconds = z * 2 = 9 * 2 = 18
         */
+        //Directory content
         byte[] ShortFileName = new byte[8];                     //0x000
         byte[] ShortFileExtention = new byte[3];                //0x008
         byte FileAttributes = new byte();                       //0x00B
@@ -103,7 +106,7 @@
         byte CreateTime_10msUnit = new byte();                  //0x00D
         byte[] CreateTime = new byte[2];                        //0x00E
         byte[] CreateDate = new byte[2];                        //0x010
-        byte[] LastAccessDate = new byte[2];
+        byte[] LastAccessDate = new byte[2];                    //0x012
         /*
             0x014-0x002 bytes
         */
@@ -111,5 +114,13 @@
         byte[] LastModifiedDate = new byte[2];                  //0x018
         byte[] StartOfFileInClusterForFAT12_16 = new byte[2];   //0x01A
         byte[] FileSizeInBytes = new byte[4];                   //0x01C
+
+        //Directory properties
+        uint DirectoryCounts = new uint();
+        bool IsLongFileName = new bool();
+        public DirectoryEntry(int offset, ref Reader image)
+        {
+
+        }
     }
 }
