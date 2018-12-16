@@ -65,12 +65,12 @@ namespace FileAllocationTableTool.Layout
         |   7       |   0x080   |   Reserved        |
         |___________|___________|___________________|
 
-        Note: for LFN (Long File Name) entry attribute always has value of 0x0F (00001111)
+        Note: for LFN (Long File Name) entry attribute always has value of 0x0F (0b0000_1111)
         */
         /*
         Example:
-        0x010 has value of F3 - 11110011
-        0x011 has value of 42 - 01000010
+        0x010 has value of F3 - 0b1111_0011
+        0x011 has value of 42 - 0b0100_0010
 
         Reverse the order of 2 bytes:
              0x011     |     0x010
@@ -84,8 +84,8 @@ namespace FileAllocationTableTool.Layout
         Day = z = 19
 
         Example:
-        0x00E has value of 49 - 01001001
-        0x00F has value of 9B - 10011011
+        0x00E has value of 49 - 0b0100_1001
+        0x00F has value of 9B - 0b1001_1011
 
         Reverse the order of 2 bytes:
              0x00F     |     0x00E
@@ -161,11 +161,10 @@ namespace FileAllocationTableTool.Layout
         //Functions
         public DirectoryEntry(int offset, ref Reader image)
         {
-            AttributesByte = image.ReadAtOffset(offset + 0x0B);
-            if (AttributesByte != 0x0F)
+            Attributes = new FileAttributes(image.ReadAtOffset(offset + 0x0B));
+            if (!Attributes.IsLongFileName())
             {
                 IsLongFileName = false;
-                Attributes = new FileAttributes(AttributesByte);
                 ShortFileName = image.ReadFromOffset(offset, 8);
                 ShortFileExtention = image.ReadFromOffset(offset + 0x08, 3);
                 CreateTime_10msUnit = image.ReadAtOffset(offset + 0x0D);
