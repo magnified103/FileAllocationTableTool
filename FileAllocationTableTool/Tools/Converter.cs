@@ -6,6 +6,15 @@ namespace FileAllocationTableTool.Tools
 {
     static class Converter
     {
+        public static bool ReadBitAtPosition(byte In, int Position)
+        {
+            byte temp = 0b1000_0000;
+            for (int i = 1; i < Position; i++)
+            {
+                temp >>= 1;
+            }
+            return (In & temp) == temp;
+        }
         //Get numberic value from bytes which numberred from the least significant end
         public static byte ReadNumbericValue_8(byte In)
         {

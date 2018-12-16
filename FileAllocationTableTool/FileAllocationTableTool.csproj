@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -43,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Layout\DirectoryEntry.cs" />
+    <Compile Include="Layout\FileAttributes.cs" />
     <Compile Include="Tools\Converter.cs" />
     <Compile Include="Layout\BootSector.cs" />
     <Compile Include="Layout\FileAllocationTableRegion.cs" />

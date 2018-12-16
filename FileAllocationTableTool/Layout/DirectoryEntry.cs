@@ -98,12 +98,17 @@ namespace FileAllocationTableTool.Layout
         Minutes = y = 26
         Seconds = z * 2 = 9 * 2 = 18
         */
-        //File attributes
-        byte FileAttributes = new byte();                       //0x00B
+
+
+        /***********************File attributes***********************/
+        byte AttributesByte = new byte();                       //0x00B
+        FileAttributes Attributes = new FileAttributes();       //0x00B
+
+        /****************************Other****************************/
         byte Type = new byte();                                 //0x00C
         byte[] StartOfFileInClusterForFAT12_16 = new byte[2];   //0x01A
 
-        //Directory entry
+        /***********************Directory entry***********************/
         byte[] ShortFileName = new byte[8];                     //0x000
         byte[] ShortFileExtention = new byte[3];                //0x008
         /*
@@ -129,8 +134,9 @@ namespace FileAllocationTableTool.Layout
         */
         byte[] FileSizeInBytes = new byte[4];                   //0x01C
 
-        //Long File Name entry
 
+
+        /********************Long File Name entry*********************/
         byte SequenceNumber = new byte();                       //0x000
         byte[] FirstNameCharacters = new byte[10];              //0x001
         /*
@@ -148,12 +154,38 @@ namespace FileAllocationTableTool.Layout
             0x01A-0x002 bytes
         */
         byte[] ThirdNameCharacters = new byte[4];               //0x01C
-        //Directory properties
-        uint DirectoryCounts = new uint();
+
+        /*********************Directory properties********************/
         bool IsLongFileName = new bool();
+
+        //Functions
         public DirectoryEntry(int offset, ref Reader image)
         {
-
+            AttributesByte = image.ReadAtOffset(offset + 0x0B);
+            if (AttributesByte != 0x0F)
+            {
+                IsLongFileName = false;
+                Attributes = new FileAttributes(AttributesByte);
+                ShortFileName = image.ReadFromOffset(offset, 8);
+                ShortFileExtention = image.ReadFromOffset(offset + 0x08, 3);
+                CreateTime_10msUnit = image.ReadAtOffset(offset + 0x0D);
+                CreateTime = image.ReadFromOffset(offset + 0x0E, 2);
+                CreateDate = image.ReadFromOffset(offset + 0x10, 2);
+                LastAccessDate = image.ReadFromOffset(offset + 0x12, 2);
+                LastModifiedTime = image.ReadFromOffset(offset + 0x16, 2);
+                LastModifiedDate = image.ReadFromOffset(offset + 0x18, 2);
+                StartOfFileInClusterForFAT12_16 = image.ReadFromOffset(offset + 0x1A, 2);
+                FileSizeInBytes = image.ReadFromOffset(offset + 0x1C, 4);
+            }
+            else
+            {
+                IsLongFileName = true;
+                SequenceNumber = image.ReadAtOffset(offset);
+                FirstNameCharacters = image.ReadFromOffset(offset + 0x01, 10);
+                FileNameChecksum = image.ReadAtOffset(offset + 0x0D);
+                SecondNameCharacters = image.ReadFromOffset(offset + 0x0E, 12);
+                ThirdNameCharacters = image.ReadFromOffset(offset + 0x1C, 4);
+            }
         }
     }
 }
