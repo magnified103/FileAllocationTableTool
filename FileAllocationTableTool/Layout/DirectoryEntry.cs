@@ -1,4 +1,5 @@
 ﻿using FileAllocationTableTool.Tools;
+using System.Collections.Generic;
 
 namespace FileAllocationTableTool.Layout
 {
@@ -158,6 +159,10 @@ namespace FileAllocationTableTool.Layout
         /*********************Directory properties********************/
         bool IsLongFileName = new bool();
 
+
+        //Inside subdirectory, if the fifth bit of attributes is 0b1
+        List<DirectoryEntry> Entries = new List<DirectoryEntry>();
+        
         //Functions
         public DirectoryEntry(int offset, ref Reader image)
         {
