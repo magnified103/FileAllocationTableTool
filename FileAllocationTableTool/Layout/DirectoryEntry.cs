@@ -64,6 +64,8 @@ namespace FileAllocationTableTool.Layout
         |___________|___________|___________________|
         |   7       |   0x080   |   Reserved        |
         |___________|___________|___________________|
+
+        Note: for LFN (Long File Name) entry attribute always has value of 0x0F (00001111)
         */
         /*
         Example:
@@ -96,11 +98,20 @@ namespace FileAllocationTableTool.Layout
         Minutes = y = 26
         Seconds = z * 2 = 9 * 2 = 18
         */
-        //Directory content
+        //File attributes
+        byte FileAttributes = new byte();                       //0x00B
+        byte Type = new byte();                                 //0x00C
+        byte[] StartOfFileInClusterForFAT12_16 = new byte[2];   //0x01A
+
+        //Directory entry
         byte[] ShortFileName = new byte[8];                     //0x000
         byte[] ShortFileExtention = new byte[3];                //0x008
-        byte FileAttributes = new byte();                       //0x00B
         /*
+            Attributes
+            0x00B-0x001 byte
+        */
+        /*
+            Type (reserved)
             0x00C-0x001 byte
         */
         byte CreateTime_10msUnit = new byte();                  //0x00D
@@ -112,9 +123,31 @@ namespace FileAllocationTableTool.Layout
         */
         byte[] LastModifiedTime = new byte[2];                  //0x016
         byte[] LastModifiedDate = new byte[2];                  //0x018
-        byte[] StartOfFileInClusterForFAT12_16 = new byte[2];   //0x01A
+        /*
+            First cluster of file
+            0x01A-0x002 bytes
+        */
         byte[] FileSizeInBytes = new byte[4];                   //0x01C
 
+        //Long File Name entry
+
+        byte SequenceNumber = new byte();                       //0x000
+        byte[] FirstNameCharacters = new byte[10];              //0x001
+        /*
+            Attributes - 0x0F
+            0x00B-0x001 byte
+        */
+        /*
+            Type - 0x00
+            0x00C-0x001 byte
+        */
+        byte FileNameChecksum = new byte();                     //0x00D
+        byte[] SecondNameCharacters = new byte[12];             //0x00E
+        /*
+            First cluster of file - 0x0000
+            0x01A-0x002 bytes
+        */
+        byte[] ThirdNameCharacters = new byte[4];               //0x01C
         //Directory properties
         uint DirectoryCounts = new uint();
         bool IsLongFileName = new bool();
