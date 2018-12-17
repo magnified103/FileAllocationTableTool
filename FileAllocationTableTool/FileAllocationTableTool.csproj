@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Layout\DataRegion.cs" />
     <Compile Include="Layout\DirectoryEntry.cs" />
     <Compile Include="Layout\FileAttributes.cs" />
     <Compile Include="Tools\Converter.cs" />
