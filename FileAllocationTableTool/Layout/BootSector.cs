@@ -62,8 +62,8 @@
         */
         byte[] JumpInstruction = new byte[3];               //0x000
         byte[] OEMName = new byte[8];                       //0x003
-        ushort BytesPerSector = new ushort();               //0x00B
-        byte SectorsPerCluster = new byte();                //0x00D
+        public ushort BytesPerSector = new ushort();        //0x00B
+        public byte SectorsPerCluster = new byte();         //0x00D
         ushort ReservedSectors = new ushort();              //0x00E
         byte FileAllocationTables = new byte();             //0x010
         ushort MaxFAT12_16RootDirEntries = new ushort();    //0x011

@@ -10,5 +10,12 @@ namespace FileAllocationTableTool
         FileAllocationTableRegion FileAllocationTableRegion;
         //Root Directory sector
         RootDirectoryRegion RootDirectoryRegion;
+
+
+        //Function
+        public void GetDirectoryEntries()
+        {
+
+        }
     }
 }

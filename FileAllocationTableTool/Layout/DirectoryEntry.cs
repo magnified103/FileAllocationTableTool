@@ -161,7 +161,7 @@ namespace FileAllocationTableTool.Layout
 
 
         //Inside subdirectory, if the fifth bit of attributes is 0b1
-        List<DirectoryEntry> Entries = new List<DirectoryEntry>();
+        public List<DirectoryEntry> Entries = new List<DirectoryEntry>();
         
         //Functions
         public DirectoryEntry(int offset, ref Reader image)

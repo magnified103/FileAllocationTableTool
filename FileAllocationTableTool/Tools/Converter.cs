@@ -6,6 +6,7 @@ namespace FileAllocationTableTool.Tools
 {
     static class Converter
     {
+        //Get bit value in byte
         public static bool ReadBitAtPosition(byte In, int Position)
         {
             byte temp = 0b1000_0000;
