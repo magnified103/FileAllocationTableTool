@@ -2,6 +2,9 @@
 
 namespace FileAllocationTableTool.Layout
 {
+    /// <summary>
+    /// Attributes of a single directory entry.
+    /// </summary>
     class FileAttributes
     {
         byte Attributes;

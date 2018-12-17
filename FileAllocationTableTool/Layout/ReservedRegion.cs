@@ -2,9 +2,9 @@
 
 namespace FileAllocationTableTool.Layout
 {
-    /*
-        Reserved sector
-    */
+    /// <summary>
+    /// Reserved sector. Contains boot sector and some reserved sectors (optional).
+    /// </summary>
     public class ReservedRegion
     {
         BootSector BootSector;

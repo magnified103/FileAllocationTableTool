@@ -2,6 +2,9 @@
 
 namespace FileAllocationTableTool
 {
+    /// <summary>
+    /// A fully design of a FAT file system.
+    /// </summary>
     class FileAllocationTable
     {
         //Reserved sector

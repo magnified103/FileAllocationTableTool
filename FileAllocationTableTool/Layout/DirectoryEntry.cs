@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace FileAllocationTableTool.Layout
 {
-    /*
-        Directory entry
-    */
+    /// <summary>
+    /// Directory entry. Stores file and folder properties.
+    /// </summary>
     class DirectoryEntry : RootDirectoryRegion
     {
         /*

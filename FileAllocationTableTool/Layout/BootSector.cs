@@ -1,8 +1,8 @@
 ﻿namespace FileAllocationTableTool.Layout
 {
-    /*
-        Boot sector
-    */
+    /// <summary>
+    /// Boot sector
+    /// </summary>
     class BootSector : ReservedRegion
     {
         /*

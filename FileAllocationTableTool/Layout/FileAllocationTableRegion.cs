@@ -1,8 +1,8 @@
 ﻿namespace FileAllocationTableTool.Layout
 {
-    /*
-        File Allocation Table sector
-    */
+    /// <summary>
+    /// File Allocation Table sectors. Contains FAT entries.
+    /// </summary>
     class FileAllocationTableRegion
     {
 
