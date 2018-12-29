@@ -160,8 +160,14 @@ namespace FileAllocationTableTool.Layout
         bool IsLongFileName = new bool();
 
 
-        //Inside subdirectory, if the fifth bit of attributes is 0b1
-        public List<DirectoryEntry> Entries = new List<DirectoryEntry>();
+        /// <summary>
+        /// Contains other directory entries, if the fifth bit of entry attributes is 1
+        /// </summary>
+        public List<DirectoryEntry> Entries
+        {
+            get;
+            set;
+        }
         
         //Functions
         public DirectoryEntry(int offset, ref Reader image)
@@ -190,6 +196,11 @@ namespace FileAllocationTableTool.Layout
                 SecondNameCharacters = image.ReadFromOffset(offset + 0x0E, 12);
                 ThirdNameCharacters = image.ReadFromOffset(offset + 0x1C, 4);
             }
+        }
+
+        public GetDirectoryEntries(int BytesPerCluster, ref Reader image)
+        {
+            
         }
     }
 }

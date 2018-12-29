@@ -13,6 +13,6 @@ namespace FileAllocationTableTool.Layout
     */
     class RootDirectoryRegion
     {
-        List<DirectoryEntry> DirectoryEntries = new List<DirectoryEntry>();
+
     }
 }
