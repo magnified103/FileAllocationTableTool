@@ -174,7 +174,12 @@ namespace FileAllocationTableTool.Layout
                 return Entries.Count;
             }
         }
-        
+
+        public GetDirectoryEntries(int StartDataRegionOffset, int BytesPerCluster, ref Reader image)
+        {
+
+        }
+
         //Functions
         public DirectoryEntry(int offset, ref Reader image)
         {
@@ -212,11 +217,5 @@ namespace FileAllocationTableTool.Layout
                 ThirdNameCharacters = image.ReadFromOffset(offset + 0x1C, 4);
             }
         }
-        /*
-        public GetDirectoryEntries(int BytesPerCluster, ref Reader image)
-        {
-            
-        }
-        */
     }
 }
