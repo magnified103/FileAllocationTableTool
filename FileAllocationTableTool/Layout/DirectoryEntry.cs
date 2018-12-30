@@ -1,5 +1,6 @@
-﻿using FileAllocationTableTool.Tools;
+﻿using System;
 using System.Collections.Generic;
+using FileAllocationTableTool.Tools;
 
 namespace FileAllocationTableTool.Layout
 {
@@ -159,19 +160,33 @@ namespace FileAllocationTableTool.Layout
         /*********************Directory properties********************/
         bool IsLongFileName = new bool();
 
+        private bool hasParentDirectory;
 
         /// <summary>
         /// Contains other directory entries, if the fifth bit of entry attributes is 1
         /// </summary>
-        public List<DirectoryEntry> Entries
+        private List<DirectoryEntry> Entries;
+
+        public int ChildDirectoryCount
         {
-            get;
-            set;
+            get
+            {
+                return Entries.Count;
+            }
         }
         
         //Functions
         public DirectoryEntry(int offset, ref Reader image)
         {
+
+            if (image.IsNull())
+            {
+                throw new ArgumentNullException("Cannot read null or empty image!");
+            }
+            Entries = new List<DirectoryEntry>();
+            /*
+                Reading part
+            */
             Attributes = new FileAttributes(image.ReadAtOffset(offset + 0x0B));
             if (!Attributes.IsLongFileName())
             {
@@ -197,10 +212,11 @@ namespace FileAllocationTableTool.Layout
                 ThirdNameCharacters = image.ReadFromOffset(offset + 0x1C, 4);
             }
         }
-
+        /*
         public GetDirectoryEntries(int BytesPerCluster, ref Reader image)
         {
             
         }
+        */
     }
 }

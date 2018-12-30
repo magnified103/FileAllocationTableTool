@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Layout\DataRegion.cs" />
     <Compile Include="Layout\DirectoryEntry.cs" />
+    <Compile Include="Layout\DirectoryTree.cs" />
     <Compile Include="Layout\FileAttributes.cs" />
     <Compile Include="Tools\Converter.cs" />
     <Compile Include="Layout\BootSector.cs" />
